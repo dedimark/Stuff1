@@ -1687,7 +1687,7 @@ stock void Reset4x4(int iMatrix[4][4])
 
 stock void ClearTimer(Handle &timer, bool autoClose = false)
 {
-    if (timer != null)
+	if (timer != null)
 		KillTimer(timer, autoClose);
-    timer = null;
+	timer = null;
 }

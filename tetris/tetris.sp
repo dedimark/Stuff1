@@ -851,9 +851,9 @@ public void SQL_DoNothing(Handle owner, Handle hndl, const char[] error, any dat
 
 void PauseTetrisGame(int client)
 {
-	delete g_hPlayerGameThink[client];
-	delete g_hDrawInfoPanel[client];
-	delete g_hPlayBackgroundMusic[client];
+	ClearTimer(g_hPlayerGameThink[client]);
+	ClearTimer(g_hDrawInfoPanel[client]);
+	ClearTimer(g_hPlayBackgroundMusic[client]);
 	if (g_bIsL4D)
 	{
 		if (GetEntPropEnt(client, Prop_Send, "m_hGroundEntity") == -1)
@@ -879,9 +879,9 @@ void PauseTetrisGame(int client)
 
 void ResetTetrisGame(int client)
 {
-	delete g_hPlayerGameThink[client];
-	delete g_hDrawInfoPanel[client];
-	delete g_hPlayBackgroundMusic[client];
+	ClearTimer(g_hPlayerGameThink[client]);
+	ClearTimer(g_hDrawInfoPanel[client]);
+	ClearTimer(g_hPlayBackgroundMusic[client]);
 	if (!g_bDisableSounds)
 		StopSoundAny(client, SNDCHAN_AUTO, TETRIS_MUSIC);
 	ResetGameField(g_bGameField[client]);
@@ -1682,5 +1682,14 @@ stock void Reset4x4(int iMatrix[4][4])
 		{
 			iMatrix[x][y] = -1;
 		}
+	}
+}
+
+stock void ClearTimer(Handle &Timer)
+{
+	if (Timer != null)
+	{
+		delete Timer;
+		Timer = null;
 	}
 }

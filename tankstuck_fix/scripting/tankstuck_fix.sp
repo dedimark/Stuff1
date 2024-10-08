@@ -378,14 +378,14 @@ stock bool IsValidClient(int client)
 	return client > 0 && client <= MaxClients;
 }
 
-stock bool IsSurvivor(int client)
-{
-	return IsValidClient(client) && GetClientTeam(client) == 2;
-}
-
 stock bool IsIncapped(int client)
 {
 	return !!GetEntProp(client, Prop_Send, "m_isIncapacitated", 1);
+}
+
+stock bool IsSurvivor(int client)
+{
+	return IsValidClient(client) && g_bisInGame[client] && GetClientTeam(client) == 2;
 }
 
 stock bool IsValidTank(int client)

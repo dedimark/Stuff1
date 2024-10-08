@@ -189,7 +189,7 @@ void ConVar_OnChange(ConVar convar, const char[] oldValue, const char[] newValue
 		return;
 	if (convar == g_hCVDisableHardDrop)
 	{
-		if(StrEqual(newValue, "1"))
+		if (StrEqual(newValue, "1"))
 			g_bDisableHardDrop = true;
 		else
 			g_bDisableHardDrop = false;
@@ -1255,7 +1255,7 @@ bool RotateObject(int client)
 	{
 		case Tetris_T:
 		{
-			switch(iTempRotation)
+			switch (iTempRotation)
 			{
 				case TetrisRotation_0:
 				{
